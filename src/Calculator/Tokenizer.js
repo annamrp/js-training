@@ -22,6 +22,7 @@ const tokenize = val => {
         };
 
         if (array.length - 1 === i + 2) return tokenizedMult;
+
         return {
           type: symbol[array[i + 3]],
           value1: tokenizedMult,

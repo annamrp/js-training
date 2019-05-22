@@ -1,4 +1,4 @@
-import tokenize from "../../src/Calculator/Tokenizer";
+import tokenize from "../../src/Calculator/tokenizer";
 import evaluator from "../../src/Calculator/evaluator";
 
 test("tokenizer recives a single number and returns a value token", () => {
@@ -22,7 +22,7 @@ test("tokenizer recives a rest of numbers and returns a token", () => {
   });
 });
 
-test("tokenizer recives a mult of numbers and returns a token", () => {
+test("tokenizer recives a mult of 2 numbers and returns a token", () => {
   expect(tokenize("5*3")).toEqual({
     type: "mult",
     value1: { value: 5, type: "value" },
