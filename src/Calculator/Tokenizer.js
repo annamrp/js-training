@@ -1,5 +1,6 @@
 const tokenize = val => {
-  const array = val.split("");
+  const array = val.match(/(\d+)|\+|\-|\*/g);
+
   let accumulator = "";
 
   const symbol = {
@@ -12,7 +13,7 @@ const tokenize = val => {
     if (array[i] !== "+" && array[i] !== "-" && array[i] !== "*") {
       accumulator += array[i];
 
-      if (i == array.length - 1) {
+      if (i === array.length - 1) {
         return { value: Number(accumulator), type: "value" };
       }
     } else {

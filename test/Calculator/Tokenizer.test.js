@@ -14,6 +14,26 @@ test("tokenizer recives a sum of numbers and returns a token", () => {
   });
 });
 
+test("tokenizer recives a mult of numbers and returns a token", () => {
+  expect(tokenize("5*3")).toEqual({
+    type: "mult",
+    value1: { value: 5, type: "value" },
+    value2: { value: 3, type: "value" }
+  });
+});
+
+// test("tokenizer recives a mult and sum of numbers and returns a token", () => {
+//   expect(tokenize("5*5+3")).toEqual({
+//     type: "sum",
+//     value1: {
+//       type: "mult",
+//       value1: { value: 5, type: "value" },
+//       value2: { value: 5, type: "value" }
+//     },
+//     value2: { value: 3, type: "value" }
+//   });
+// });
+
 test("eval recives a value token and returns its value", () => {
   expect(evaluator({ value: 8, type: "value" })).toEqual(8);
 });
