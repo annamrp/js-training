@@ -221,6 +221,12 @@ test("runs the program", () => {
 });
 
 test("runs the program", () => {
+  const result = evaluator(tokenize("30/3/2"));
+
+  expect(result).toBe(5);
+});
+
+test("runs the program", () => {
   const result = evaluator(tokenize("2.2+2.1"));
 
   expect(result).toBe(4.3);
