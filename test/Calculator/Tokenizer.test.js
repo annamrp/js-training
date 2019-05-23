@@ -66,6 +66,50 @@ test("tokenizer recives a mult of 3 numbers and returns a token", () => {
   });
 });
 
+test("tokenizer recives a div of numbers and returns a token", () => {
+  expect(tokenize("6/2")).toEqual({
+    type: "div",
+    value1: { value: 6, type: "value" },
+    value2: { value: 2, type: "value" }
+  });
+});
+
+test("tokenizer recives a div and a rest of numbers and returns a token", () => {
+  expect(tokenize("6/2-3")).toEqual({
+    type: "rest",
+    value1: {
+      type: "div",
+      value1: { value: 6, type: "value" },
+      value2: { value: 2, type: "value" }
+    },
+    value2: { value: 3, type: "value" }
+  });
+});
+
+test("tokenizer recives a sum and a div of numbers and returns a token", () => {
+  expect(tokenize("3+6/2")).toEqual({
+    type: "sum",
+    value1: { value: 3, type: "value" },
+    value2: {
+      type: "div",
+      value1: { value: 6, type: "value" },
+      value2: { value: 2, type: "value" }
+    }
+  });
+});
+
+test("tokenizer recives a div of 3 numbers and returns a token", () => {
+  expect(tokenize("12/3/2")).toEqual({
+    type: "div",
+    value1: {
+      type: "div",
+      value1: { value: 12, type: "value" },
+      value2: { value: 3, type: "value" }
+    },
+    value2: { value: 2, type: "value" }
+  });
+});
+
 test("eval recives a value token and returns its value", () => {
   expect(evaluator({ value: 8, type: "value" })).toEqual(8);
 });
@@ -150,4 +194,28 @@ test("runs the program", () => {
   const result = evaluator(tokenize("5*5+3-1"));
 
   expect(result).toBe(27);
+});
+
+test("runs the program", () => {
+  const result = evaluator(tokenize("12/3/2"));
+
+  expect(result).toBe(2);
+});
+
+test("runs the program", () => {
+  const result = evaluator(tokenize("5+10/2"));
+
+  expect(result).toBe(10);
+});
+
+test("runs the program", () => {
+  const result = evaluator(tokenize("5+10/2"));
+
+  expect(result).toBe(10);
+});
+
+test("runs the program", () => {
+  const result = evaluator(tokenize("30/7-2"));
+
+  expect(result).toBe(2.29);
 });

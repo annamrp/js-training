@@ -1,17 +1,18 @@
 const tokenize = val => {
-  const array = val.match(/(\d+)|\+|\-|\*/g);
+  const array = val.match(/(\d+)|\+|\-|\*|\//g);
 
   let accumulator = "";
 
   const symbol = {
     "+": "sum",
     "-": "rest",
-    "*": "mult"
+    "*": "mult",
+    "/": "div"
   };
 
   for (let i = 0; i < array.length; i++) {
     if (array[i] !== "+" && array[i] !== "-" && array[i] !== "*") {
-      if (array[i + 1] === "*") {
+      if (array[i + 1] === "*" || array[i + 1] === "/") {
         const currentValue = array[i];
         const nextValue = array[i + 2];
         const multSymbol = symbol[array[i + 1]];
