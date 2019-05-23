@@ -1,5 +1,5 @@
 const tokenize = val => {
-  const array = val.match(/(\d+)|\+|\-|\*|\//g);
+  const array = val.match(/(\d+)?(\.?\d+)|\+|\-|\*|\//g);
 
   let accumulator = "";
 

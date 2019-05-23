@@ -219,3 +219,15 @@ test("runs the program", () => {
 
   expect(result).toBe(2.29);
 });
+
+test("runs the program", () => {
+  const result = evaluator(tokenize("2.2+2.1"));
+
+  expect(result).toBe(4.3);
+});
+
+test("runs the program", () => {
+  const result = evaluator(tokenize("2.2-2.1"));
+
+  expect(result).toBe(0.1);
+});

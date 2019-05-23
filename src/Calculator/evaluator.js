@@ -1,12 +1,20 @@
 const evaluator = token => {
   if (token.type == "sum") {
-    return evaluator(token.value1) + evaluator(token.value2);
+    return (
+      Math.round((evaluator(token.value1) + evaluator(token.value2)) * 100) /
+      100
+    );
   }
   if (token.type == "rest") {
-    return evaluator(token.value1) - evaluator(token.value2);
+    return (
+      Math.round((evaluator(token.value1) - evaluator(token.value2)) * 100) /
+      100
+    );
   }
   if (token.type == "mult") {
-    return evaluator(token.value1) * evaluator(token.value2);
+    return (
+      Math.round(evaluator(token.value1) * evaluator(token.value2) * 100) / 100
+    );
   }
   if (token.type == "div") {
     return (
