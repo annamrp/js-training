@@ -60,7 +60,6 @@ function Tokenizer() {
       }
     }
   };
-  console.log(new Token());
 
   return { tokenize: input => tokenize(input) };
 }
