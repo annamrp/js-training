@@ -1,5 +1,5 @@
 function Tokenizer() {
-  function Token(value, type) {
+  function ValueToken(value, type) {
     this.type = type;
     this.value = Number(value);
   }
@@ -47,7 +47,7 @@ function Tokenizer() {
         }
 
         if (i === array.length - 1) {
-          return new Token(array[i], "value");
+          return new ValueToken(array[i], "value");
         }
 
         accumulator = array[i];
@@ -60,6 +60,7 @@ function Tokenizer() {
       }
     }
   };
+  console.log(new Token());
 
   return { tokenize: input => tokenize(input) };
 }
