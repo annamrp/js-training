@@ -233,7 +233,7 @@ test("runs the program", () => {
 });
 
 test("runs the program", () => {
-  const result = evaluator(tokenize("2.201-2.101"));
+  const result = evaluator(tokenize("2.2-2.1"));
 
   expect(result).toBe(0.1);
 });
