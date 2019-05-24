@@ -9,23 +9,19 @@ function OperationToken(value1, value2, type) {
   this.value2 = value2;
 }
 
+const symbol = {
+  "+": "sum",
+  "-": "rest",
+  "*": "mult",
+  "/": "div"
+};
+
 const tokenize = input => {
   const array = input.match(/(\d+)?(\.?\d+)|\+|\-|\*|\//g);
-  const symbol = {
-    "+": "sum",
-    "-": "rest",
-    "*": "mult",
-    "/": "div"
-  };
   let accumulator = "";
 
   for (let i = 0; i < array.length; i++) {
-    if (
-      array[i] !== "+" &&
-      array[i] !== "-" &&
-      array[i] !== "*" &&
-      array[i] !== "/"
-    ) {
+    if (!Object.keys(symbol).includes(array[i])) {
       if (array[i + 1] === "*" || array[i + 1] === "/") {
         const currentValue = array[i];
         const nextValue = array[i + 2];
